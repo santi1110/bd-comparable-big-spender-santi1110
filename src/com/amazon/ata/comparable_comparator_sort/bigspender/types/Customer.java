@@ -6,13 +6,14 @@ import java.util.Objects;
 /**
  * Represents a customer who uses AWS.
  */
-public class Customer {
+public class Customer implements Comparable<Customer> {
     private String name;
     private LocalDate joinDate;
 
     /**
      * Constructor creating an AWS customer.
-     * @param name The unique name of the customer.
+     *
+     * @param name     The unique name of the customer.
      * @param joinDate The Data that the customer joined.
      */
     public Customer(String name, LocalDate joinDate) {
@@ -31,9 +32,9 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-            "name='" + name + '\'' +
-            ", joinDate=" + joinDate +
-            '}';
+                "name='" + name + '\'' +
+                ", joinDate=" + joinDate +
+                '}';
     }
 
     @Override
@@ -51,12 +52,25 @@ public class Customer {
         }
 
         Customer that = (Customer) o;
-        return Objects.equals(name, that.name) &&
-            Objects.equals(joinDate, that.joinDate);
+        return Objects.equals(this.name, that.name) &&
+                Objects.equals(this.joinDate, that.joinDate);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, joinDate);
+    }
+
+    @Override
+    public int compareTo(Customer that) {
+        if (this.equals(that)) {
+            return 0;
+        }else{
+            if (!this.equals(that.getName())) {
+                return this.name.compareTo(that.getName());
+                }else{
+                   return this.joinDate.compareTo(that.getJoinDate());
+                }
+            }
     }
 }

@@ -24,51 +24,55 @@ class CustomerTest {
     @Test
     void compareTo_withAnEqualCustomer_returnsZero() {
         // GIVEN
-
+        Customer equalCustomer = new Customer("nedflix",nedflixJoinDate);
         // WHEN
-
+        int result = nedflixCustomer.compareTo(equalCustomer);
         // THEN
-        fail("Test not implemented yet!");
+        assertEquals(0,result, "Expected compareTo to return 0 for equal customer");
     }
 
     @Test
     void compareTo_withLaterCustomerName_returnsNegative() {
         // GIVEN
-
+        Customer customerWithLaterName = new Customer("tedflix", nedflixJoinDate);
         // WHEN
+        int result = nedflixCustomer.compareTo(customerWithLaterName);
 
         // THEN
-        fail("Test not implemented yet!");
+        assertTrue(result < 0, "Expected compareTo to return negative for customer with later name");
     }
 
     @Test
     void compareTo_withEarlierCustomerName_returnsPositive() {
-        // GIVEN
-
+        //THEN
+        Customer customerWithLaterName = new Customer("edflix", nedflixJoinDate);
         // WHEN
+        int result = nedflixCustomer.compareTo(customerWithLaterName);
 
         // THEN
-        fail("Test not implemented yet!");
+        assertTrue(result > 0, "Expected compareTo to return positive for customer with later name");
     }
 
     @Test
     void compareTo_withSameCustomerNameLaterJoinDate_returnsNegative() {
         // GIVEN
-
+        Customer customerWithLaterName = new Customer("tom",LocalDate.of(2024,5,1));
         // WHEN
+        int result = nedflixJoinDate.compareTo(customerWithLaterName.getJoinDate());
 
         // THEN
-        fail("Test not implemented yet!");
+        assertTrue(result < 0, "Expected compareTo to return negative for join date");
     }
 
     @Test
     void compareTo_withSameCustomerNameEarlierJoinDate_returnsPositive() {
         // GIVEN
-
+        Customer customerWithLaterName = new Customer("tom",LocalDate.of(2005,5,1));
         // WHEN
+        int result = nedflixJoinDate.compareTo(customerWithLaterName.getJoinDate());
 
         // THEN
-        fail("Test not implemented yet!");
+        assertTrue(result > 0, "Expected compareTo to return negative for join date");
     }
 
     // PARTICIPANTS: leave these tests below alone
